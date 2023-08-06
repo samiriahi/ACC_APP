@@ -1,0 +1,24 @@
+jwt:
+  secret: 'letMeIn'
+
+
+server:
+  port: 5000
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/Acc_DataBase?serverTimezone=UTC
+    username: root
+    password: Sami90**
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false

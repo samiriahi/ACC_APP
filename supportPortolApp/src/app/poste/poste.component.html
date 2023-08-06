@@ -1,0 +1,141 @@
+<body>
+
+    <br><br>
+    <i class="fas fa-desktop" style="color: #1f5151" ></i>
+    <span class="text" style="color: #1f5151; font-size: large;" >Gestion des Postes :</span>
+    <br><br>
+
+    <div class="mb-3 float-right">
+        <div class="btn-group mr-2">
+            <form  class="form-inline my-2 my-lg-0 justify-content-center">
+                <input name="searchTerm" class=" form-control mr-sm-2 "    #serchForm="ngModel" ngModel type="search" 
+                 (ngModelChange)="searchPoste(serchForm.value)"   placeholder="Search Poste ... " >
+            </form>
+            <button   type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addPosteModal">
+            <i class="fa fa-plus"></i> New Poste
+            </button>
+        </div>
+        <div class="btn-group">
+            <button type="button" (click)="getPostes(true)" class="btn btn-success">
+            <i style="font-size: small;" class="fas fa-sync-alt"></i>
+        </button>
+        </div>
+    </div>
+    <br><br><br>
+
+        <!-- Poste tab -->
+        <table class="table table-hover">
+            <thead class="table-borderless">
+            <tr class="text-center " style="text-align:center ; font-size:small" >
+            <th style="text-align:center">Nom Poste</th>
+            <th style="text-align:center">Nom Reseau</th>
+            <th style="text-align:center">Cadence</th>
+            <th style="text-align:center">ligne Production</th>
+            <th style="text-align:center">Actions </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let appPoste of postes  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <tr class="text-center" style="text-align:center">
+        <td>{{appPoste?.nomPoste}}</td>
+        <td>{{appPoste?.nomReseau}}</td>
+        <td>{{appPoste?.cadence}}</td>
+        <td>{{appPoste?.ligneProd.codeLp}} </td>
+        <td>
+            <div class="btn-group">
+                <button [hidden]="!isAdminOrManager" class="btn btn" >
+                    <i style="font-size: medium;color:gray" class="fas fa-edit" (click)="editPosteInfo(appPoste)" ></i>
+                </button>
+                <button [hidden]="!isAdmin" class="btn danger" > 
+                    <i style="font-size: medium;color: red" class="fas fa-trash" (click)="deletePoste(appPoste.nomPoste)" ></i>
+                </button>
+            </div>
+        </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div >
+          <div class="centered-element"> 
+            <pagination-controls class="paginator" (pageChange)=" p = $event " > </pagination-controls>
+          </div>
+        </div>
+        
+        <button [hidden]="true" type="button" id="openEditPoste" data-toggle="modal" data-target="#editPosteModal"> 
+        </button>
+
+
+        <!-- Modal add ligneProd -->
+         <div class="modal fade bd-example-modal-lg" id="addPosteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">new Poste: </h3>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form #newLigneForm="ngForm" (ngSubmit)="addPoste(newLigneForm)">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label for="nomPoste" class="form-label">Nom Poste</label>
+                    <input type="text"   name="nomPoste" ngModel required class="form-control" >
+                  </div>
+                  <div class="col-sm-6">
+                  <label for="nomReseau" class="form-label">Nom Reseau</label>
+                  <input type="text" name="nomReseau" ngModel required class="form-control" >
+                </div>
+                <div class="col-sm-6">
+                  <label for="cadence" class="form-label">Niv Cadence</label>
+                  <input type="text"  name="cadence" ngModel required class="form-control">
+                </div>
+              </div>
+              <button type="submit" style="display: none;" id="new-Poste-save"></button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"  id="new-Poste-close">Close</button>
+              <button type="button" type="button" (click)="savePoste()" [disabled]="newLigneForm.invalid" class="btn btn-primary">Save</button>
+            </div>
+           </div>
+          </div>
+        </div>
+         <!-- Modal Edit uf  -->
+        <div class="modal fade" id="editPosteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+           <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Modifier les informations du Poste  {{editPoste.nomPoste}}  :</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+              </div>
+              <div class="modal-body">
+                <form #editPosteForm="ngForm" >
+                    <div class="form-group">
+                       <label for="nomReseau">Reseau</label>
+                       <input type="text" name="nomReseau"  required [(ngModel)]="editPoste.nomReseau" class="form-control">
+                    </div>
+                    <div class="form-group">
+                       <label for="cadance">cadance</label>
+                       <input type="text" name="cadance"  required [(ngModel)]="editPoste.cadence" class="form-control">
+                    </div>
+                    <button type="submit" style="display: none;" id="new-UF-save"></button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="edit-Poste-close"> Close </button>
+                <button type="button"  (click)="updatePoste()" [disabled]="editPosteForm.invalid " class="btn btn-primary">Save changes</button>
+              </div>
+          </div>    
+         </div>
+        </div>
+
+
+</body>
+
+
+
+<div>
+  <app-sidenavigation></app-sidenavigation>
+</div>>

@@ -1,0 +1,95 @@
+<div class="sidebar close" #sidebar>
+  <a class="logo">
+    <img src="https://www.sagemcom.com/sites/default/files/2021-07/Logo%20Sagemcom_1.jpg" (click)="toggleSidebar()" class="rounded">
+</a>
+    
+    <ul class="nav-links">
+     <li >
+      <a routerLink="/dashbord-chart">
+        <i class='bx bx-grid-alt'></i>
+        <span class="link_name">Dashboard</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" routerLink="/dashbord-chart" >Dashboard</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-collection'></i>
+          <span class="link_name">Admin</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li ><a class="link_name" >Admin</a></li>
+        <li><a routerLink="/user/management">Users</a></li>
+        <li><a routerLink="/group">groups</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-book-alt'></i>
+          <span class="link_name">Workshop</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name">Workshop</a></li>
+        <li><a routerLink="/ligneProduction">Lignes</a></li>
+        <li><a routerLink="/unite-fabrication">UF</a></li>
+        <li><a routerLink="/poste">Posts</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="/pickliste">
+        <i class='bx bx-compass'></i>
+        <span class="link_name">Suivi-Picklist</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" routerLink="/pickliste">Suivi-Picklist</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="/profile">
+        <i class='bx bxs-user-account'></i>
+        <span class="link_name">Profile</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" routerLink="/profile" >Profile</a></li>
+      </ul>
+    </li>
+    <li>
+      <a  routerLink="/setting" >
+        <i class='bx bx-cog'></i>
+        <span class="link_name">Setting</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name"  routerLink="/setting">Setting</a></li>
+      </ul>
+    </li>
+    <li>
+      <a>
+        <i class='bx bx-history'></i>
+        <span class="link_name">History</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name">History</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="profile-details">
+        <div class="profile-content" routerLink="/profile"  >
+          <img src= {{connectedUser.profileImageUrl}} class="img-fluid rounded-circle" alt="profile-img">
+        </div>
+        <div class="name-job" routerLink="/profile" >
+          <div class="profile_name">{{connectedUser.username}}</div>
+          <div class="job">{{connectedUser.role}}</div>
+        </div>
+        <a (click)="onLogOut()"><i class='bx bx-log-out' ></i></a> 
+      </div>
+    </li>
+  </ul>
+</div>
+

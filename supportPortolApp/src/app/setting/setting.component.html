@@ -1,0 +1,27 @@
+<body>
+
+    <i style="color: blue;" class="fas fa-cog" ></i>
+    <Span class="text"  style="color: blue; font-size: large;">  User Password Management </Span>
+
+    <div [hidden]="!isAdmin" >
+    <form #resetPasswprdForm = "ngForm" (ngSubmit)="resetPassword(resetPasswprdForm)"> 
+      <fieldset>
+        <legend >reset Password</legend>
+        <div class="form-group" >
+          <label for="emailInput" >Email Address : </label>
+          <input type="email" name="reset-password-email" required  ngModel class="form-control" placeholder="Enter your email (example@addresscom)" >
+          <small class="form-text text-muted " > We'll never share your email with anyone else . </small>
+        </div>
+        <button type="submit"  [disabled]="resetPasswprdForm.invalid" class="btn btn-primary">
+          <i *ngIf="refreshing" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+          <span *ngIf="refreshing" >Loading ...</span>
+          <span *ngIf="!refreshing" >Reset Password...</span>
+        </button>
+      </fieldset>
+    </form>
+    </div>
+</body>
+
+<div>
+  <app-sidenavigation></app-sidenavigation>
+</div>

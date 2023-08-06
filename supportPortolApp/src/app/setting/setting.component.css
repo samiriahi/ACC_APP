@@ -1,0 +1,14 @@
+body{
+    background:#ffffff;
+    padding-left: 260px;
+    padding-right: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
+.fas{
+    width: 40px ;
+    height: 20px ;
+    font-size: 30px ;
+}

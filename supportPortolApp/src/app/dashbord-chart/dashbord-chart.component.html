@@ -1,0 +1,140 @@
+<body>
+ 
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+  <div id="page-wrapper" class="container">
+    <div class="row">
+    <div class="col-lg-12">
+      <ol class="breadcrumb">
+        <li class="active"><h3><i class="fa fa-dashboard"></i> Dashboard <small>Statistics Overview</small></h3></li>
+      </ol>
+      <div class="alert alert-success alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        Use this boxes to fill your dashboard. You can load number of Users, Postes, Pickliste, etc...
+      </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="col-md-12 ">
+      <div class="row ">
+          <div class="col-xl-3 col-lg-6">
+              <div class="card l-bg-blue-dark">
+                  <div class="card-statistic-3 p-4">
+                      <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                      <div class="mb-4">
+                          <h4 class="card-title mb-0">TotalUsers</h4>
+                      </div>
+                      <div class="row align-items-center mb-2 d-flex">
+                          <div class="col-8">
+                              <h2 class="d-flex align-items-center mb-0">
+                                  {{totalUsers}}
+                              </h2>
+                          </div>
+                          <div class="col-4 text-right">
+                              <span>12.5% <i class="fa fa-arrow-up"></i></span>
+                          </div>
+                      </div>
+                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                          <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0"
+                               aria-valuemax="100" style="width: 25%;"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 ">
+              <div class="card l-bg-orange-dark">
+                  <div class="card-statistic-3 p-4">
+                      <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                      <div class="mb-4">
+                          <h4 class="card-title mb-0">Postes</h4>
+                      </div>
+                      <div class="row align-items-center mb-2 d-flex">
+                          <div class="col-8">
+                              <h2 class="d-flex align-items-center mb-0">
+                                {{totalPostes}}
+                              </h2>
+                          </div>
+                          <div class="col-4 text-right">
+                              <span>9.23% <i class="fa fa-arrow-up"></i></span>
+                          </div>
+                      </div>
+                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                          <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 ">
+              <div class="card l-bg-green-dark">
+                  <div class="card-statistic-3 p-4">
+                      <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                      <div class="mb-4">
+                          <h4 class="card-title mb-0">Pickliste demandée</h4>
+                      </div>
+                      <div class="row align-items-center mb-2 d-flex">
+                          <div class="col-8">
+                              <h2 class="d-flex align-items-center mb-0">
+                                {{picklistesDemander}}
+                              </h2>
+                          </div>
+                          <div class="col-4 text-right">
+                              <span>10% <i class="fa fa-arrow-up"></i></span>
+                          </div>
+                      </div>
+                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                          <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+              <div class="card l-bg-cherry">
+                  <div class="card-statistic-3 p-4">
+                      <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                      <div class="mb-4">
+                          <h4 class="card-title mb-0">Pickliste servie</h4>
+                      </div>
+                      <div class="row align-items-center mb-2 d-flex">
+                          <div class="col-8">
+                              <h2 class="d-flex align-items-center mb-0">
+                                {{picklistesServi}}
+                              </h2>
+                          </div>
+                          <div class="col-4 text-right">
+                              <span>2.5% <i class="fa fa-arrow-up"></i></span>
+                          </div>
+                      </div>
+                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                          <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="chart-container">
+
+      <div style="width: 500px; height: 300px;">
+        <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="true"
+                chartType="line"></canvas>
+      </div>
+
+      <div style="width: 500px; height: 300px;">
+        <canvas id="usersChart"></canvas>
+      </div>
+
+    </div>
+
+  </div>  
+
+
+
+
+<div>
+    <app-sidenavigation></app-sidenavigation>
+</div></body>

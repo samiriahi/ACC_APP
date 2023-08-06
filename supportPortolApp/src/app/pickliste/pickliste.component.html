@@ -1,0 +1,71 @@
+  <body>
+    <h2 style="color: blue;">Interface de Suivie Pickliste :</h2>
+    <div class="text-center">
+    <form #picklisteSerchForm = "ngForm" (ngSubmit)="getPicklistes(true , picklisteSerchForm)">
+      <label for="codeUf">code UF :</label>
+      <input type="text"  name="codeUf"  required  ngModel class="form-control-sm" placeholder="Code UF" >
+      <label for="mag">Magasin :</label>
+      <input type="text" name="mag" required  ngModel class="form-control-sm" placeholder="Magasin">
+      
+      <button type="submit" [disabled]="picklisteSerchForm.invalid" class="btn btn-primary">Rechercher</button>
+    </form>
+    </div><br>
+    
+    <!-- user tab -->
+    <div  *ngIf="show">
+        <table class="table table-hover"  id="my-table">
+        <thead class="table-borderless">
+        <tr class="text-center"  style="text-align:center ; font-size:small" >
+        <th style="text-align:center">num PickList</th>
+        <th style="text-align:center">ligneProduction</th>
+        <th style="text-align:center">hostname</th>
+        <th style="text-align:center">code Produit</th>
+        <th style="text-align:center">type-PickList</th>
+        <th style="text-align:center" >observation </th>
+        <th style="text-align:center" >date Creation </th>
+        <th style="text-align:center">Status</th>
+        <th style="text-align:center">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let appPickliste of picklistes  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+    <tr class="text-center" style="text-align:center" 
+        [ngClass]="{'text-success': appPickliste.status.code === 'SERVI', 'text-danger': appPickliste.status.code === 'DEMANDER'}">
+
+    <td>{{appPickliste?.numPickList}}</td>
+    <td >{{appPickliste?.ligneProduction.codeLp}}</td>
+    <td >{{appPickliste?.hostame}}</td>
+    <td >{{appPickliste?.codeProduit}}</td>
+    <td >{{appPickliste?.typePickList}}</td>
+    <td >{{appPickliste?.observation}}</td>
+    <td >{{appPickliste?.dateCreation | date: 'medium'}}</td>
+    <td > {{appPickliste?.status.code}} </td>
+
+    <td class="">
+    <div class="btn-group">
+        <button class="btn btn"(click)="exportExcel()" >
+            <i class="fas fa-file-excel" style="color: #0f8821; ; font-size: 20px;"></i>
+        </button>
+        </div>
+        </td>
+      </tr>
+        </tbody>
+        </table>
+    
+        <div >
+          <div class="centered-element"> 
+            <pagination-controls class="paginator" (pageChange)=" p = $event " > </pagination-controls>
+          </div>
+        </div>
+    
+      </div>
+    
+  </body>
+
+
+
+
+
+
+  <div>
+    <app-sidenavigation></app-sidenavigation>
+  </div>

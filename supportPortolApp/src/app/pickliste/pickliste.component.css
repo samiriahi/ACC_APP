@@ -1,0 +1,45 @@
+body{
+    background:#ffffff;
+    padding-left: 260px;
+    padding-right: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
+input {
+    margin-right: 20px;
+  }
+
+  .centered-element{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 400px;
+}
+
+.paginator{
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+}
+
+.paginator ::ng-deep .ngx-pagination .current {
+    background: rgb(102, 112, 177);
+    border-radius: 4px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.paginator ::ng-deep .ngx-pagination a:hover, .ngx-pagination button:hover {
+    background: #d4d4d4;
+    border-radius: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    text-decoration: none;
+}
+
+.paginator ::ng-deep .ngx-pagination a:focus, .ngx-pagination button:focus {
+    outline: none;
+    background: #d4d4d4;
+}

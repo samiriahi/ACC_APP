@@ -1,0 +1,194 @@
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">
+                    <img src="./../../assets/img/sagemcom.jpg" alt="Logo" class="logo-img">
+                    Intranet Integration
+                </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="btn btn-info btn" id="click-form-open" >Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">Sagemcom Tunisia Industry</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">Partout dans le monde, grâce aux solutions innovantes conçues et fabriquées par
+                             nos équipes, Sagemcom permet au plus grand nombre d'accéder à l'Internet haut débit, au divertissement et
+                              à une énergie maîtrisée. Depuis 2022, Sagemcom est une :  <br> « Entreprise avec une mission ».</p>
+                        <a class="btn btn-info btn" id="form-open">Login</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+         <!-- Form -->
+    <section class="home">
+        <div class="form_container">
+          <i class="uil uil-times form_close"></i>
+          <!-- Login  -->
+          <div class="form login_form">
+            <form action="#" #loginForm="ngForm" (ngSubmit) = "onLogin(loginForm.value)" >
+              <h2>Login</h2>
+  
+              <div class="input_box">
+                <input type="text" placeholder="Enter your username" name="username" ngModel #usernameInput="ngModel" required />
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+              <div class="input_box">
+                <input type="password" placeholder="Enter your password" name="password" ngModel #passwordInput="ngModel" required />
+                <i class="uil uil-lock password"></i>
+                <i class="uil uil-eye-slash pw_hide"></i>
+              </div>
+  
+              <div class="option_field">
+                <span class="checkbox">
+                  <input type="checkbox" id="check" />
+                  <label for="check">Remember me</label>
+                </span>
+                <a href="#" class="forgot_pw">Forgot password?</a>
+              </div>
+  
+              <button class="button" [disabled]="loginForm.invalid" >Login Now</button>
+  
+              <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+            </form>
+          </div>
+  
+          <!-- Signup -->
+          <div class="form signup_form">
+            <form action="#"  #registerForm="ngForm" (ngSubmit) = "onRegister(registerForm.value)">
+              <h2>Signup</h2>
+  
+              <div class="input_box">
+                <input type="text" name="firstName" ngModel #firstNameInput="ngModel" required placeholder="First Name"/>
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+              <div class="input_box">
+                <input type="text" name="lastName" ngModel #lastNameInput="ngModel" required  placeholder="Last Name" />
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+              <div class="input_box">
+                <input type="text" name="username" ngModel #usernameInput="ngModel" required placeholder="Username" />
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+              <div class="input_box">
+                <input type="email"  name="email" ngModel #emailInput="ngModel" required placeholder="Enter your Email" />
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+  
+              <button class="button" type="submit" [disabled]="registerForm.invalid ">Signup Now</button>
+  
+              <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+            </form>
+          </div>
+        </div>
+      </section>
+  
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0"> Nos Services :</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Énergie et Télécom</h3>
+                            <p class="text-muted mb-0">Fort de plus de 25 ans d’expérience dans le monde des Télécoms et de la gestion de l’énergie, Sagemcom s’est imposé naturellement comme un acteur majeur des solutions de gestion et de pilotage de l’énergie et de l'eau, contribuant ainsi activement à une utilisation plus rationnelle de l’énergie.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Solutions BroadBand</h3>
+                            <p class="text-muted mb-0">Intégrateur à la pointe des technologies du haut débit, Sagemcom est un leader mondial de passerelles haut débit et propose aux opérateurs de services une gamme complète couvrant toutes les technologies d’accès (Fibre, DOCSIS, DSL/FTTH, FWA 4G/5G) et de distribution Wi-Fi intelligente (Wi-Fi 5, Wi-Fi6, Wi-Fi 6E, EasyMesh...).</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Solutions Audio, video et Logicielles</h3>
+                            <p class="text-muted mb-0">Avec une offre complète de services et de solutions logicielles, Sagemcom accompagne les opérateurs dans le déploiement et l’exploitation de leurs services de divertissement numérique à domicile.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="mt-0">Contactez-nous !</h2>
+                        <hr class="divider" />
+                        <p class="text-muted mb-5">Prêt à démarrer votre prochain projet avec nous ? Envoyez-nous un message et nous vous répondrons dans les plus brefs délais !</p>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-lg-6">
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <label for="name">Full name</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Email address</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Phone number</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+            
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-info btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                        <div>+(33) 1 57 61 10 00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright ; 2023 - Sagemcom 2008-2023</div></div>
+        </footer>
+        
+        
+    </body>
+
